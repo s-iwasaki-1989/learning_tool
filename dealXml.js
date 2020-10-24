@@ -1,5 +1,5 @@
 function getQASet(qno) {
-  var xmlHttp = new XMLHTTPRequest();
+  const xmlHttp = new XMLHttpRequest();
   var qaSet = "";
   xmlHttp.onreadystatechange = function () {
     if (xmlHttp.readyState != 4 || xmlHttp.status != 200) {
@@ -16,13 +16,13 @@ function getQASet(qno) {
       }
     }
   }
-  xmlHttp.open("GET", "問題集.xml");
+  xmlHttp.open("GET", "QAs.xml");
   xmlHttp.send();
   return qaSet;
 }
 
 function setQASet(question, answer) {
-  var xmlHttp = new XMLHTTPRequest();
+  const xmlHttp = new XMLHTTPRequest();
   var qno = 0;
   xmlHttp.onreadystatechange = function () {
     if (xmlHttp.readyState != 4 || xmlHttp.status != 200) {
@@ -32,7 +32,7 @@ function setQASet(question, answer) {
     var qNos = xmlDoc.getElementByTagName("qno");
     qno = qNos[qNos.length - 1].textContent + 1;
   }
-  xmlHttp.open("POST", "問題集.xml");
+  xmlHttp.open("POST", "QAs.xml");
   xmlHttp.setRequestHeader("Content-Type", text/xml);
   xmlHttp.send(crtXMLTagItem(qno, question, answer));
 }
